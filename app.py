@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, send_file
 from geopy.geocoders import Nominatim
 import pandas
 import datetime
+from sqlalchemy.sql import  func
+from werkzeug import secure_filename
+
 
 app=Flask(__name__)
 
@@ -23,7 +26,7 @@ def success_table():
             df=df.drop("coordinates",1)
             filename=datetime.datetime.now().strftime("sample_files/%Y-%m-%d-%H-%M-%S-%f"+".csv")
             df.to_csv(filename,index=None)
-            return render_template("index.html", text=df.to_html(), btn='download.html')
+            return render_template("index.html", text=df.to_html(),btn='download.html')
         except Exception as e:
             return render_template("index.html", text=str(e))
 
