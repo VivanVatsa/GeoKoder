@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<title> Super GeoKODER </title>
+<title>
+    Super GeoKODER
+</title>
 
 <head>
     <link href="../static/main.css" rel="stylesheet">
@@ -9,13 +11,20 @@
 <body>
     <div class="container">
         <h1>Super Geocoder</h1>
-        <h3>Please upload your CSV file. The values containing addresses should be in a column named <em>address</em> or <em>Address</em></h3>
+        <h3>Please upload your CSV file. The values containing addresses should be in a column named
+            <em>address</em> or
+            <em>Address</em>
+        </h3>
         <form action="{{url_for('success_table')}}" method="POST" enctype="multipart/form-data">
             <input type="file" accept=".csv" name="file" />
-            <button type="submit"> Submit </button>
+            <button type="submit">
+          Submit
+        </button>
         </form>
         <div class="output">
-            {{text|safe}} {% include btn ignore missing %}
+            {{text|safe}}
+            <!-- {% include btn ignore missing %} -->
+            {% if btn %} {%include btn%} {% endif %}
         </div>
     </div>
 </body>
